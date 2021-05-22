@@ -8,9 +8,9 @@ namespace HW3.model
     class Course
     {
         private int courseid;
-        private String coursename;
+        private string coursename;
 
-        public Course(int courseid, String coursename)
+        public Course(int courseid, string coursename)
         {
             this.courseid = courseid;
             this.coursename = coursename;

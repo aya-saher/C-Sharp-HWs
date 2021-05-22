@@ -8,9 +8,9 @@ namespace HW3.model
     class Teacher
     {
         private int teacherid;
-        private String teachername;
+        private string teachername;
 
-        public Teacher(int teacherid, String teachername)
+        public Teacher(int teacherid, string teachername)
         {
             this.teacherid = teacherid;
             this.teachername = teachername;

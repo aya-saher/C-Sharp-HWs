@@ -31,12 +31,14 @@ namespace HW2
             FillCourses();
             FillTeachers();
             FillRooms();
+
+            btn_edit.Enabled = false;
+            btn_clear.Enabled = false;
         }
 
 
         private void FillCourses()
         {
-            cmb_course.DataSource = null;
             cmb_course.DataSource = attendance.getCourses();
             cmb_course.SelectedIndex = -1;
         }
@@ -44,7 +46,6 @@ namespace HW2
 
         private void FillTeachers()
         {
-            cmb_teacher.DataSource = null;
             cmb_teacher.DataSource = attendance.getTeachers();
             cmb_teacher.SelectedIndex = -1;
         }
@@ -52,7 +53,6 @@ namespace HW2
 
         private void FillRooms()
         {
-            cmb_room.DataSource = null;
             cmb_room.DataSource = attendance.getRooms();
             cmb_room.SelectedIndex = -1;
         }
@@ -60,7 +60,7 @@ namespace HW2
         private void btn_save_Click(object sender, EventArgs e)
         {
             dgv_attendance.DataSource = null;
-            attendance.SaveAttendance((Teacher)cmb_teacher.SelectedItem, (Course)cmb_course.SelectedItem, (Room)cmb_room.SelectedItem,
+            attendance.SaveAttendance(((Teacher)cmb_teacher.SelectedItem).TeacherName, ((Course)cmb_course.SelectedItem).CourseName, ((Room)cmb_room.SelectedItem).RoomName,
                                     dtp_date.Value.ToString(), dtp_start.Value.ToString(), dtp_leaving.Value.ToString(), txt_comment.Text);
 
             data_source.DataSource = attendance.GetAttendances();
@@ -126,7 +126,10 @@ namespace HW2
             if (e.RowIndex > -1)
             {
                 selected_item = e.RowIndex;
-                /*btnUpdate.Enabled = true;*/
+
+                btn_edit.Enabled = true;
+                btn_clear.Enabled = true;
+
                 cmb_teacher.Text = dgv_attendance.Rows[e.RowIndex].Cells["teacher"].Value.ToString();
                 cmb_course.Text = dgv_attendance.Rows[e.RowIndex].Cells["course"].Value.ToString();
                 cmb_room.Text = dgv_attendance.Rows[e.RowIndex].Cells["room"].Value.ToString();
@@ -134,6 +137,55 @@ namespace HW2
                 dtp_start.Text = dgv_attendance.Rows[e.RowIndex].Cells["start_time"].Value.ToString();
                 dtp_leaving.Text = dgv_attendance.Rows[e.RowIndex].Cells["leaving_time"].Value.ToString();
                 txt_comment.Text = dgv_attendance.Rows[e.RowIndex].Cells["comment"].Value.ToString();
+            }
+        }
+
+        private void btn_edit_Click(object sender, EventArgs e)
+        {
+            dgv_attendance.Rows[selected_item].Cells["teacher"].Value = cmb_teacher.Text;
+            dgv_attendance.Rows[selected_item].Cells["course"].Value = cmb_course.Text;
+            dgv_attendance.Rows[selected_item].Cells["room"].Value = cmb_room.Text;
+            dgv_attendance.Rows[selected_item].Cells["date"].Value = dtp_date.Text;
+            dgv_attendance.Rows[selected_item].Cells["start_time"].Value = dtp_start.Text;
+            dgv_attendance.Rows[selected_item].Cells["leaving_time"].Value = dtp_leaving.Text;
+            dgv_attendance.Rows[selected_item].Cells["comment"].Value = txt_comment.Text;
+
+            btn_edit.Enabled = false;
+            btn_clear.Enabled = false;
+            selected_item = -1;
+            clearFields();
+        }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl.GetType() == typeof(TextBox))
+                {
+                    ((TextBox)ctrl).Clear();
+
+                }
+                else if (ctrl.GetType() == typeof(ComboBox))
+                {
+                    ((ComboBox)ctrl).SelectedIndex = -1;
+                }
+            }
+        }
+
+        private void clearFields()
+        {
+
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl.GetType() == typeof(TextBox))
+                {
+                    ((TextBox)ctrl).Clear();
+
+                }
+                else if (ctrl.GetType() == typeof(ComboBox))
+                {
+                    ((ComboBox)ctrl).SelectedIndex = -1;
+                }
             }
         }
     }

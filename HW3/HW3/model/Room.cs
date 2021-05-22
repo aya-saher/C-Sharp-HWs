@@ -8,9 +8,9 @@ namespace HW3.model
     class Room
     {
         private int roomid;
-        private String roomname;
+        private string roomname;
 
-        public Room(int roomid, String roomname)
+        public Room(int roomid, string roomname)
         {
             this.roomid = roomid;
             this.roomname = roomname;

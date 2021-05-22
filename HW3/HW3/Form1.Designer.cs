@@ -44,6 +44,8 @@
             this.dgv_attendance = new System.Windows.Forms.DataGridView();
             this.lbl_comment = new System.Windows.Forms.Label();
             this.txt_comment = new System.Windows.Forms.TextBox();
+            this.btn_edit = new System.Windows.Forms.Button();
+            this.btn_clear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_attendance)).BeginInit();
             this.SuspendLayout();
             // 
@@ -198,11 +200,35 @@
             this.txt_comment.Size = new System.Drawing.Size(726, 20);
             this.txt_comment.TabIndex = 15;
             // 
+            // btn_edit
+            // 
+            this.btn_edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.btn_edit.Location = new System.Drawing.Point(542, 187);
+            this.btn_edit.Name = "btn_edit";
+            this.btn_edit.Size = new System.Drawing.Size(148, 27);
+            this.btn_edit.TabIndex = 16;
+            this.btn_edit.Text = "Edit";
+            this.btn_edit.UseVisualStyleBackColor = true;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
+            // 
+            // btn_clear
+            // 
+            this.btn_clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.btn_clear.Location = new System.Drawing.Point(388, 187);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(148, 27);
+            this.btn_clear.TabIndex = 17;
+            this.btn_clear.Text = "Clear";
+            this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(925, 465);
+            this.Controls.Add(this.btn_clear);
+            this.Controls.Add(this.btn_edit);
             this.Controls.Add(this.txt_comment);
             this.Controls.Add(this.lbl_comment);
             this.Controls.Add(this.dgv_attendance);
@@ -246,6 +272,8 @@
         private System.Windows.Forms.DataGridView dgv_attendance;
         private System.Windows.Forms.Label lbl_comment;
         private System.Windows.Forms.TextBox txt_comment;
+        private System.Windows.Forms.Button btn_edit;
+        private System.Windows.Forms.Button btn_clear;
     }
 }
 

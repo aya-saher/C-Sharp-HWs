@@ -7,15 +7,15 @@ namespace HW3.model
 {
     class Attendance
     {
-        public Teacher teacher { get; set; }
-        public Course course { get; set; }
-        public Room room { get; set; }
+        public string teacher { get; set; }
+        public string course { get; set; }
+        public string room { get; set; }
         public string date { get; set; }
         public string start_time { get; set; }
         public string leaving_time { get; set; }
         public string comment { get; set; }
 
-        public Attendance(Teacher teacher, Course course, Room room, string date, string start_time, string leaving_time, string comment)
+        public Attendance(string teacher, string course, string room, string date, string start_time, string leaving_time, string comment)
         {
             this.teacher = teacher;
             this.course = course;

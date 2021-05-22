@@ -70,7 +70,7 @@ namespace HW3.model
             return temp;
         }
 
-        public void SaveAttendance(Teacher teacher, Course course, Room room, string date, string start_time, string leaving_time, string comment)
+        public void SaveAttendance(string teacher, string course, string room, string date, string start_time, string leaving_time, string comment)
         {
             attendances.Insert(0, new Attendance(teacher, course, room, date, start_time, leaving_time, comment));
         }

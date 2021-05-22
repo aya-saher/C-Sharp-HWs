@@ -7,8 +7,8 @@ namespace HW2.model
 {
     class Teacher
     {
-        private int teacherid;
-        private String teachername;
+        public int teacherid;
+        public string teachername;
 
         public Teacher(int teacherid, String teachername)
         {

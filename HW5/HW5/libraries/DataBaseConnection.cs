@@ -15,8 +15,8 @@ namespace HW5.libraries
         static DataBaseConnection()
         {
 
-            database_connection_String = ConfigurationManager.ConnectionStrings["MarketconnectionStrings"].ConnectionString;
-            database_provider = ConfigurationManager.ConnectionStrings["MarketconnectionStrings"].ProviderName;
+            database_connection_String = ConfigurationManager.ConnectionStrings["HW5connectionStrings"].ConnectionString;
+            database_provider = ConfigurationManager.ConnectionStrings["HW5connectionStrings"].ProviderName;
         }
 
         public static DbCommand getConnection()

@@ -36,7 +36,6 @@ namespace HW2
 
         private void FillCourses()
         {
-            cmb_course.DataSource = null;
             cmb_course.DataSource = attendance.getCourses();
             cmb_course.SelectedIndex = -1;
         }
@@ -44,7 +43,6 @@ namespace HW2
 
         private void FillTeachers()
         {
-            cmb_teacher.DataSource = null;
             cmb_teacher.DataSource = attendance.getTeachers();
             cmb_teacher.SelectedIndex = -1;
         }
@@ -52,7 +50,6 @@ namespace HW2
 
         private void FillRooms()
         {
-            cmb_room.DataSource = null;
             cmb_room.DataSource = attendance.getRooms();
             cmb_room.SelectedIndex = -1;
         }
@@ -60,7 +57,7 @@ namespace HW2
         private void btn_save_Click(object sender, EventArgs e)
         {
             dgv_attendance.DataSource = null;
-            attendance.SaveAttendance((Teacher)cmb_teacher.SelectedItem, (Course)cmb_course.SelectedItem, (Room)cmb_room.SelectedItem,
+            attendance.SaveAttendance(((Teacher)cmb_teacher.SelectedItem).teachername, ((Course)cmb_course.SelectedItem).CourseName, ((Room)cmb_room.SelectedItem).RoomName,
                                     dtp_date.Value.ToString(), dtp_start.Value.ToString(), dtp_leaving.Value.ToString(), txt_comment.Text);
 
             data_source.DataSource = attendance.GetAttendances();
@@ -126,7 +123,6 @@ namespace HW2
             if (e.RowIndex > -1)
             {
                 selected_item = e.RowIndex;
-                /*btnUpdate.Enabled = true;*/
                 cmb_teacher.Text = dgv_attendance.Rows[e.RowIndex].Cells["teacher"].Value.ToString();
                 cmb_course.Text = dgv_attendance.Rows[e.RowIndex].Cells["course"].Value.ToString();
                 cmb_room.Text = dgv_attendance.Rows[e.RowIndex].Cells["room"].Value.ToString();
